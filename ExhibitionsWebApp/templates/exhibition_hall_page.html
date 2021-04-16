@@ -1,0 +1,30 @@
+{% extends 'common.html' %}
+{% block manage %}
+    <a class="botr" href={% url 'create_exhibition_hall' %}>Create</a>
+{% endblock %}
+{% block table %}
+    <tr>
+        <td>Name</td>
+        <td>Square</td>
+        <td>Address</td>
+        <td>Phone</td>
+        <td>Owner</td>
+        <td>Description</td>
+        <td>Exhibitions</td>
+        <td>Delete</td>
+        <td>Edit</td>
+    </tr>
+    {% for exhibition_hall in exhibitionhall_list %}
+        <tr>
+            <td>{{ exhibition_hall.name }}</td>
+            <td>{{ exhibition_hall.square }}</td>
+            <td>{{ exhibition_hall.address }}</td>
+            <td>{{ exhibition_hall.phone }}</td>
+            <td>{{ exhibition_hall.owner.name }}</td>
+            <td>{{ exhibition_hall.description }}</td>
+            <td>{{ exhibition_hall.get_exhibitions }}</td>
+            <td><a href={% url "delete_exhibition_hall" exhibition_hall.id %}>Delete</a></td>
+            <td><a href={% url "edit_exhibition_hall" exhibition_hall.id %}>Edit</a></td>
+        </tr>
+    {% endfor %}
+{% endblock %}

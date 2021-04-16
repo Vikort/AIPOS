@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main page</title>
+{#    {% load static %}#}
+{#    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>#}
+</head>
+<body>
+<div>
+    <a href="{% url "exhibition_hall_page" %}" class="botr">Exhibition Halls</a>
+    <a href="{% url "exhibition_page" %}">Exhibitions</a>
+    <a href="{% url "artwork_page" %}">Artwork</a>
+    <a href="{% url 'artist_page' %}">Artist</a>
+    <a href="{% url 'owner_page' %}">Owner</a>
+</div>
+{% block page %}
+    {% block content %}
+    {% endblock %}
+{% endblock %}
+</body>
+</html>
