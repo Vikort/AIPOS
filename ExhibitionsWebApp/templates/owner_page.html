@@ -1,24 +1,23 @@
-{% extends 'common.html' %}
-{% block manage %}
-    <a class="botr" href={% url 'create_owner' %}>Create</a>
-{% endblock %}
-{% block table %}
-    <tr>
-        <td>Name</td>
-        <td>Address</td>
-        <td>Phone</td>
-        <td>Description</td>
-        <td>Delete</td>
-        <td>Edit</td>
-    </tr>
-    {% for owner in owner_list %}
-        <tr>
-            <td>{{ owner.name }}</td>
-            <td>{{ owner.address }}</td>
-            <td>{{ owner.phone }}</td>
-            <td>{{ owner.description }}</td>
-            <td><a href={% url "delete_owner" owner.id %}>Delete</a></td>
-            <td><a href={% url "edit_owner" owner.id %}>Edit</a></td>
-        </tr>
-    {% endfor %}
+{% extends 'main_page.html' %}
+{% block content %}
+    <!-- Title -->
+    <h1 class="mt-4">{{ owner.name }}</h1>
+
+    <hr>
+    <!-- Preview Image -->
+    <img class="img-fluid rounded" src="{{ owner.image.url }}" alt="{{ owner.name }}">
+
+    <hr>
+    <!-- Contacts -->
+    <h4>Contacts</h4>
+    <h6>Address</h6>
+    <p>{{ owner.address }}</p>
+    <h6>Phone</h6>
+    <p>{{ owner.phone }}</p>
+
+    <hr>
+
+    <!-- Description -->
+    <p class="lead">{{ owner.description }}</p>
+    <hr>
 {% endblock %}

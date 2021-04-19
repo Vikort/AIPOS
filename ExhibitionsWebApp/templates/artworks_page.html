@@ -1,0 +1,20 @@
+{% extends 'main_page.html' %}
+{% block content %}
+    <h1 class="my-4">Artworks</h1>
+    {% for artwork in artwork_list %}
+    <!-- Blog Post -->
+    <div class="card mb-4">
+        <img class="card-img-top" src="{{ artwork.image.url }}" alt="Artwork">
+        <div class="card-body">
+            <h2 class="card-title">{{ artwork.name }}</h2>
+            <p class="card-text">{{ artwork.description }}</p>
+            <a href="{% url "artwork_page" artwork.id %}" class="btn btn-primary">More &rarr;</a>
+            <a class="btn btn-primary" href={% url "delete_artwork" artwork.id %}>Delete</a>
+            <a class="btn btn-primary" href={% url "edit_artwork" artwork.id %}>Edit</a>
+        </div>
+    </div>
+    {% endfor %}
+{% endblock %}
+{% block manage %}
+    <a class="btn btn-primary" href={% url 'create_artwork' %}>Create</a>
+{% endblock %}

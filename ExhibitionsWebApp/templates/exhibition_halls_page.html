@@ -1,0 +1,20 @@
+{% extends 'main_page.html' %}
+{% block content %}
+    <h1 class="my-4">Exhibition Halls</h1>
+    {% for exhibition_hall in exhibitionhall_list %}
+    <!-- Blog Post -->
+    <div class="card mb-4">
+        <img class="card-img-top" src="{{ exhibition_hall.image.url }}" alt="Exhibition Hall">
+        <div class="card-body">
+            <h2 class="card-title">{{ exhibition_hall.name }}</h2>
+            <p class="card-text">{{ exhibition_hall.description }}</p>
+            <a href="{% url "exhibition_hall_page" exhibition_hall.id %}" class="btn btn-primary">More &rarr;</a>
+            <a class="btn btn-primary" href={% url "delete_exhibition_hall" exhibition_hall.id %}>Delete</a>
+            <a class="btn btn-primary" href={% url "edit_exhibition_hall" exhibition_hall.id %}>Edit</a>
+        </div>
+    </div>
+    {% endfor %}
+{% endblock %}
+{% block manage %}
+    <a class="btn btn-primary" href={% url 'create_exhibition_hall' %}>Create</a>
+{% endblock %}

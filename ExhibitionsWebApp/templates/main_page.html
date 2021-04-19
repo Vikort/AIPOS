@@ -1,22 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load static %}
 <head>
-    <meta charset="UTF-8">
-    <title>Main page</title>
-{#    {% load static %}#}
-{#    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>#}
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Exhibitions</title>
+    {#    {% load static %}#}
+    {#    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>#}
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <style type="text/css">
+        body {
+            padding-top: 56px;
+            padding-bottom: 120px;
+        }
+    </style>
+
 </head>
+
 <body>
-<div>
-    <a href="{% url "exhibition_hall_page" %}" class="botr">Exhibition Halls</a>
-    <a href="{% url "exhibition_page" %}">Exhibitions</a>
-    <a href="{% url "artwork_page" %}">Artwork</a>
-    <a href="{% url 'artist_page' %}">Artist</a>
-    <a href="{% url 'owner_page' %}">Owner</a>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="{% url "main_page" %}">Exhibitions</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url "main_page" %}">Home</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- Page Content -->
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-8 position-relative">
+            {% block content %}
+                <!-- Blog Entries Column -->
+                <h1 class="my-4">Exhibitions
+                    <small>in Minsk</small>
+                </h1>
+
+                <!-- Blog Post -->
+                <div class="card mb-4">
+                    <img class="card-img-top" src="{% static "main_image.jpg" %}" alt="Minsk">
+                    <div class="card-body">
+                        <h2 class="card-title">Minsk</h2>
+                        <p class="card-text">Minsk is the capital and the largest city of Belarus, located on the Svislač and the Niamiha rivers. As the capital, Minsk has a special administrative status in Belarus and is the administrative centre of Minsk Region and Minsk District. As of January 2018, its population was 1,982,444, making Minsk the 10th most populous city in Europe. Minsk is the administrative capital of the Commonwealth of Independent States and seat of its Executive Secretary.
+<br/>The earliest historical references to Minsk date to the 11th century (1067), when it was noted as a provincial city within the Principality of Polotsk. The settlement developed on the rivers. In 1242, Minsk became part of the Grand Duchy of Lithuania. It received town privileges in 1499.
+<br/>From 1569, it was a capital of the Minsk Voivodeship, in the Polish–Lithuanian Commonwealth. It was part of a region annexed by the Russian Empire in 1793, as a consequence of the Second Partition of Poland. From 1919 to 1991, after the Russian Revolution, Minsk was the capital of the Byelorussian Soviet Socialist Republic, in the Soviet Union. In June 2019, Minsk hosted the 2019 European Games.</p>
+                    </div>
+                </div>
+            {% endblock %}
+        </div>
+
+        <!-- Sidebar Widgets Column -->
+        <div class="col-md-4">
+            <!-- Categories Widget -->
+            <div class="card my-4">
+                <h5 class="card-header">Categories</h5>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <ul class="list-unstyled mb-0">
+                                <li>
+                                    <a href="{% url "exhibition_halls_page" %}">Exhibition Halls</a>
+                                </li>
+                                <li>
+                                    <a href="{% url "exhibitions_page" %}">Exhibitions</a>
+                                </li>
+                                <li>
+                                    <a href="{% url "artworks_page" %}">Artworks</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6">
+                            <ul class="list-unstyled mb-0">
+                                <li>
+                                    <a href="{% url 'artists_page' %}">Artists</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'owners_page' %}">Owners</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card my-4">
+                {% block manage %}
+                {% endblock %}
+            </div>
+        </div>
+
+    </div>
+
 </div>
-{% block page %}
-    {% block content %}
-    {% endblock %}
-{% endblock %}
+
+<!-- Footer -->
+<footer class="py-5 bg-dark  fixed-bottom">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; My Website 2021</p>
+    </div>
+</footer>
+
+<!-- Bootstrap core JavaScript -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+
 </body>
 </html>

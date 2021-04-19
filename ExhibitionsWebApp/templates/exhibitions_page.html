@@ -1,0 +1,20 @@
+{% extends 'main_page.html' %}
+{% block content %}
+    <h1 class="my-4">Exhibitions</h1>
+    {% for exhibition in exhibition_list %}
+    <!-- Blog Post -->
+    <div class="card mb-4">
+        <img class="card-img-top" src="{{ exhibition.image.url }}" alt="Exhibition">
+        <div class="card-body">
+            <h2 class="card-title">{{ exhibition.name }}</h2>
+            <p class="card-text">{{ exhibition.description }}</p>
+            <a href="{% url "exhibition_page" exhibition.id %}" class="btn btn-primary">More &rarr;</a>
+            <a class="btn btn-primary" href={% url "delete_exhibition" exhibition.id %}>Delete</a>
+            <a class="btn btn-primary" href={% url "edit_exhibition" exhibition.id %}>Edit</a>
+        </div>
+    </div>
+    {% endfor %}
+{% endblock %}
+{% block manage %}
+    <a class="btn btn-primary" href={% url 'create_exhibition' %}>Create</a>
+{% endblock %}

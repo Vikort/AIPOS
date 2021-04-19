@@ -1,32 +1,27 @@
-{% extends 'common.html' %}
-{% block manage %}
-    <a class="botr" href={% url 'create_artwork' %}>Create</a>
-{% endblock %}
-{% block table %}
-    <tr>
-        <td>Name</td>
-        <td>Artist</td>
-        <td>Kind of work</td>
-        <td>Date</td>
-        <td>Height</td>
-        <td>Width</td>
-        <td>Volume</td>
-        <td>Description</td>
-        <td>Delete</td>
-        <td>Edit</td>
-    </tr>
-    {% for artwork in artwork_list %}
-        <tr>
-            <td>{{ artwork.name }}</td>
-            <td>{{ artwork.artist.name }}</td>
-            <td>{{ artwork.kind_of_work }}</td>
-            <td>{{ artwork.date }}</td>
-            <td>{{ artwork.height }}</td>
-            <td>{{ artwork.width }}</td>
-            <td>{{ artwork.volume }}</td>
-            <td>{{ artwork.description }}</td>
-            <td><a href={% url "delete_artwork" artwork.id %}>Delete</a></td>
-            <td><a href={% url "edit_artwork" artwork.id %}>Edit</a></td>
-        </tr>
-    {% endfor %}
+{% extends 'main_page.html' %}
+{% block content %}
+    <!-- Title -->
+    <h1 class="mt-4">{{ artwork.name }}</h1>
+    <p class="lead">
+        by
+        <a href="{% url "artist_page" artwork.artist.id %}">{{ artwork.artist.name }}</a>
+    </p>
+    <hr>
+    <!-- Preview Image -->
+    <img class="img-fluid rounded" src="{{ artwork.image.url }}" alt="{{ artwork.name }}">
+
+    <hr>
+    <!-- Info -->
+    <h6>Kind of work</h6>
+    <p>{{ artwork.kind_of_work }}</p>
+    <h6>Date</h6>
+    <p>{{ artwork.date }}</p>
+    <h6>Measurements</h6>
+    <p>{{ artwork.height }}x{{ artwork.width }}x{{ artwork.volume }}</p>
+
+    <hr>
+
+    <!-- Description -->
+    <p class="lead">{{ artwork.description }}</p>
+    <hr>
 {% endblock %}

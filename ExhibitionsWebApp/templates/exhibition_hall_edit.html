@@ -2,7 +2,12 @@
 {% block content %}
     <form class="form" action="{% url 'edit_exhibition_hall' exhibition_hall %}" method="post">
         {% csrf_token %}
-        {{ form }}
-        <input type="submit" value="Update">
+        {% for field in form %}
+            <div class="form-group">
+                {{ field.label_tag }}
+                <div>{{ field }}</div>
+            </div>
+        {% endfor %}
+        <input type="submit" value="Update" class="btn btn-primary">
     </form>
 {% endblock %}

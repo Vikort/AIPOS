@@ -1,26 +1,35 @@
-{% extends 'common.html' %}
-{% block manage %}
-    <a class="botr" href={% url 'create_exhibition' %}>Create</a>
-{% endblock %}
-{% block table %}
-    <tr>
-        <td>Name</td>
-        <td>Kind</td>
-        <td>Date</td>
-        <td>Descriptions</td>
-        <td>Artworks</td>
-        <td>Delete</td>
-        <td>Edit</td>
-    </tr>
-    {% for exhibition in exhibition_list %}
-        <tr>
-            <td>{{ exhibition.name }}</td>
-            <td>{{ exhibition.kind }}</td>
-            <td>{{ exhibition.date }}</td>
-            <td>{{ exhibition.description }}</td>
-            <td>{{ exhibition.get_artworks }}</td>
-            <td><a href={% url "delete_exhibition" exhibition.id %}>Delete</a></td>
-            <td><a href={% url "edit_exhibition" exhibition.id %}>Edit</a></td>
-        </tr>
+{% extends 'main_page.html' %}
+{% block content %}
+    <!-- Title -->
+    <h1 class="mt-4">{{ exhibition.name }}</h1>
+
+    <hr>
+    <!-- Preview Image -->
+    <img class="img-fluid rounded" src="{{ exhibition.image.url }}" alt="{{ exhibition.name }}">
+
+    <hr>
+    <!-- Info -->
+    <h6>Kind</h6>
+    <p>{{ exhibition.kind }}</p>
+    <h6>Date</h6>
+    <p>{{ exhibition.date }}</p>
+
+    <hr>
+
+    <!-- Description -->
+    <p class="lead">{{ exhibition.description }}</p>
+    <hr>
+    <h5>Artworks</h5>
+
+    {% for artwork in exhibition.get_artworks %}
+        <a href="{% url "artwork_page" artwork.id %}">
+            <img src="{{ artwork.image.url }}" class="rounded img-thumbnail" alt="Artwork">
+        </a>
+        <a href="{% url "artwork_page" artwork.id %}">
+            <p>{{ artwork.name }}</p>
+        </a>
     {% endfor %}
+
+    <hr>
+
 {% endblock %}

@@ -13,10 +13,19 @@ def main_page(request):
 
 
 # owner views
-class OwnerView(ListView):
+class OwnersView(ListView):
     model = Owner
-    template_name = 'owner_page.html'
+    template_name = 'owners_page.html'
     queryset = Owner.objects.all()
+
+
+def owner_view(request, pk):
+    try:
+        owner = Owner.objects.get(id=pk)
+    except Exception:
+        return HttpResponseNotFound("<h2>Owner is not found</h2>")
+    else:
+        return render(request, "owner_page.html", context={"owner": owner})
 
 
 class OwnerCreate(CreateView):
@@ -50,10 +59,19 @@ def owner_edit(request, pk):
 
 
 # artist views
-class ArtistView(ListView):
+class ArtistsView(ListView):
     model = Artist
-    template_name = 'artist_page.html'
+    template_name = 'artists_page.html'
     queryset = Artist.objects.all()
+
+
+def artist_view(request, pk):
+    try:
+        artist = Artist.objects.get(id=pk)
+    except Exception:
+        return HttpResponseNotFound("<h2>Artist is not found</h2>")
+    else:
+        return render(request, "artist_page.html", context={"artist": artist})
 
 
 class ArtistCreate(CreateView):
@@ -87,10 +105,19 @@ def artist_edit(request, pk):
 
 
 # artwork views
-class ArtworkView(ListView):
+class ArtworksView(ListView):
     model = Artwork
-    template_name = 'artwork_page.html'
+    template_name = 'artworks_page.html'
     queryset = Artwork.objects.all()
+
+
+def artwork_view(request, pk):
+    try:
+        artwork = Artwork.objects.get(id=pk)
+    except Exception:
+        return HttpResponseNotFound("<h2>Artwork is not found</h2>")
+    else:
+        return render(request, "artwork_page.html", context={"artwork": artwork})
 
 
 class ArtworkCreate(CreateView):
@@ -124,10 +151,19 @@ def artwork_edit(request, pk):
 
 
 # exhibition views
-class ExhibitionView(ListView):
+class ExhibitionsView(ListView):
     model = Exhibition
-    template_name = 'exhibition_page.html'
+    template_name = 'exhibitions_page.html'
     queryset = Exhibition.objects.all()
+
+
+def exhibition_view(request, pk):
+    try:
+        exhibition = Exhibition.objects.get(id=pk)
+    except Exception:
+        return HttpResponseNotFound("<h2>Exhibition is not found</h2>")
+    else:
+        return render(request, "exhibition_page.html", context={"exhibition": exhibition})
 
 
 class ExhibitionCreate(CreateView):
@@ -161,10 +197,19 @@ def exhibition_edit(request, pk):
 
 
 # exhibition halls views
-class ExhibitionHallView(ListView):
+class ExhibitionHallsView(ListView):
     model = ExhibitionHall
-    template_name = 'exhibition_hall_page.html'
+    template_name = 'exhibition_halls_page.html'
     queryset = ExhibitionHall.objects.all()
+
+
+def exhibition_hall_view(request, pk):
+    try:
+        exhibition_hall = ExhibitionHall.objects.get(id=pk)
+    except Exception:
+        return HttpResponseNotFound("<h2>Exhibition hall is not found</h2>")
+    else:
+        return render(request, "exhibition_hall_page.html", context={"exhibition_hall": exhibition_hall})
 
 
 class ExhibitionHallCreate(CreateView):

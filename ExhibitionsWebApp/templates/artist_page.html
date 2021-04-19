@@ -1,26 +1,26 @@
-{% extends 'common.html' %}
-{% block manage %}
-    <a class="botr" href={% url 'create_artist' %}>Create</a>
-{% endblock %}
-{% block table %}
-    <tr>
-        <td>Name</td>
-        <td>Place of birth</td>
-        <td>Date of birth</td>
-        <td>Biography</td>
-        <td>Education</td>
-        <td>Delete</td>
-        <td>Edit</td>
-    </tr>
-    {% for artist in artist_list %}
-        <tr>
-            <td>{{ artist.name }}</td>
-            <td>{{ artist.place_of_birth }}</td>
-            <td>{{ artist.date_of_birth }}</td>
-            <td>{{ artist.biography }}</td>
-            <td>{{ artist.education }}</td>
-            <td><a href={% url "delete_artist" artist.id %}>Delete</a></td>
-            <td><a href={% url "edit_artist" artist.id %}>Edit</a></td>
-        </tr>
-    {% endfor %}
+{% extends 'main_page.html' %}
+{% block content %}
+    <!-- Title -->
+    <h1 class="mt-4">{{ artist.name }}</h1>
+
+    <hr>
+    <!-- Preview Image -->
+    <img class="img-fluid rounded" src="{{ artist.image.url }}" alt="{{ artist.name }}">
+
+    <hr>
+    <!-- Info -->
+    <h6>Place of birth</h6>
+    <p>{{ artist.place_of_birth }}</p>
+    <h6>Date of Birth</h6>
+    <p>{{ artist.date_of_birth }}</p>
+    <h6>Education</h6>
+    <p>{{ artist.education }}</p>
+
+    <hr>
+
+    <!-- Description -->
+    <h5>Biography</h5>
+    <p class="lead">{{ artist.biography }}</p>
+    <hr>
+
 {% endblock %}

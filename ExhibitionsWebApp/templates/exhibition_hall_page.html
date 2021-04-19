@@ -1,30 +1,38 @@
-{% extends 'common.html' %}
-{% block manage %}
-    <a class="botr" href={% url 'create_exhibition_hall' %}>Create</a>
-{% endblock %}
-{% block table %}
-    <tr>
-        <td>Name</td>
-        <td>Square</td>
-        <td>Address</td>
-        <td>Phone</td>
-        <td>Owner</td>
-        <td>Description</td>
-        <td>Exhibitions</td>
-        <td>Delete</td>
-        <td>Edit</td>
-    </tr>
-    {% for exhibition_hall in exhibitionhall_list %}
-        <tr>
-            <td>{{ exhibition_hall.name }}</td>
-            <td>{{ exhibition_hall.square }}</td>
-            <td>{{ exhibition_hall.address }}</td>
-            <td>{{ exhibition_hall.phone }}</td>
-            <td>{{ exhibition_hall.owner.name }}</td>
-            <td>{{ exhibition_hall.description }}</td>
-            <td>{{ exhibition_hall.get_exhibitions }}</td>
-            <td><a href={% url "delete_exhibition_hall" exhibition_hall.id %}>Delete</a></td>
-            <td><a href={% url "edit_exhibition_hall" exhibition_hall.id %}>Edit</a></td>
-        </tr>
+{% extends 'main_page.html' %}
+{% block content %}
+    <!-- Title -->
+    <h1 class="mt-4">{{ exhibition_hall.name }}</h1>
+    <p class="lead">
+        Owner
+        <a href="{% url "owner_page" exhibition_hall.owner.id %}">{{ exhibition_hall.owner.name }}</a>
+    </p>
+    <hr>
+    <!-- Preview Image -->
+    <img class="img-fluid rounded" src="{{ exhibition_hall.image.url }}" alt="{{ exhibition_hall.name }}">
+
+    <hr>
+    <!-- Info -->
+    <h6>Address</h6>
+    <p>{{ exhibition_hall.address }}</p>
+    <h6>Phone</h6>
+    <p>{{ exhibition_hall.phone }}</p>
+    <h6>Square</h6>
+    <p>{{ exhibition_hall.square }}</p>
+
+    <hr>
+
+    <!-- Description -->
+    <p class="lead">{{ exhibition_hall.description }}</p>
+    <hr>
+
+    {% for exhibition in exhibition_hall.get_exhibitions %}
+        <a href="{% url "exhibition_page" exhibition.id %}">
+            <img src="{{ exhibition.image.url }}" class="rounded img-thumbnail" alt="Artwork">
+        </a>
+        <a href="{% url "exhibition_page" exhibition.id %}">
+            <p>{{ exhibition.name }}</p>
+        </a>
     {% endfor %}
+
+    <hr>
 {% endblock %}
