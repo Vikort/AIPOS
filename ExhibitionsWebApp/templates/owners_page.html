@@ -4,7 +4,7 @@
     {% for owner in owner_list %}
     <!-- Blog Post -->
     <div class="card mb-4">
-        <img class="card-img-top" src="{{ owner.image.url }}" alt="Owner">
+        <img class="card-img-top" src="{{ owner.image }}" alt="Owner">
         <div class="card-body">
             <h2 class="card-title">{{ owner.name }}</h2>
             <p class="card-text">{{ owner.description }}</p>

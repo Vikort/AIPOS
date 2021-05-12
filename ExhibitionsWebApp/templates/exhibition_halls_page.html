@@ -1,10 +1,10 @@
 {% extends 'main_page.html' %}
 {% block content %}
     <h1 class="my-4">Exhibition Halls</h1>
-    {% for exhibition_hall in exhibitionhall_list %}
+    {% for exhibition_hall in exhibition_hall_list %}
     <!-- Blog Post -->
     <div class="card mb-4">
-        <img class="card-img-top" src="{{ exhibition_hall.image.url }}" alt="Exhibition Hall">
+        <img class="card-img-top" src="{{ exhibition_hall.image }}" alt="Exhibition Hall">
         <div class="card-body">
             <h2 class="card-title">{{ exhibition_hall.name }}</h2>
             <p class="card-text">{{ exhibition_hall.description }}</p>

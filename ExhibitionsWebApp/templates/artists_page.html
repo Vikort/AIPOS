@@ -4,7 +4,7 @@
     {% for artist in artist_list %}
     <!-- Blog Post -->
     <div class="card mb-4">
-        <img class="card-img-top" src="{{ artist.image.url }}" alt="Artist">
+        <img class="card-img-top" src="{{ artist.image }}" alt="Artist">
         <div class="card-body">
             <h2 class="card-title">{{ artist.name }}</h2>
             <p class="card-text">{{ artist.biography }}</p>

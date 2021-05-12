@@ -4,11 +4,11 @@
     <h1 class="mt-4">{{ exhibition_hall.name }}</h1>
     <p class="lead">
         Owner
-        <a href="{% url "owner_page" exhibition_hall.owner.id %}">{{ exhibition_hall.owner.name }}</a>
+        <a href="{% url "owner_page" exhibition_hall.owner %}">{{ exhibition_hall.owner_name }}</a>
     </p>
     <hr>
     <!-- Preview Image -->
-    <img class="img-fluid rounded" src="{{ exhibition_hall.image.url }}" alt="{{ exhibition_hall.name }}">
+    <img class="img-fluid rounded" src="{{ exhibition_hall.image }}" alt="{{ exhibition_hall.name }}">
 
     <hr>
     <!-- Info -->
@@ -25,9 +25,9 @@
     <p class="lead">{{ exhibition_hall.description }}</p>
     <hr>
 
-    {% for exhibition in exhibition_hall.get_exhibitions %}
+    {% for exhibition in exhibition_hall.exhibitions %}
         <a href="{% url "exhibition_page" exhibition.id %}">
-            <img src="{{ exhibition.image.url }}" class="rounded img-thumbnail" alt="Artwork">
+            <img src="{{ exhibition.image }}" class="rounded img-thumbnail" alt="Artwork">
         </a>
         <a href="{% url "exhibition_page" exhibition.id %}">
             <p>{{ exhibition.name }}</p>

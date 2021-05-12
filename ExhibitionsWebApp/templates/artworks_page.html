@@ -4,7 +4,7 @@
     {% for artwork in artwork_list %}
     <!-- Blog Post -->
     <div class="card mb-4">
-        <img class="card-img-top" src="{{ artwork.image.url }}" alt="Artwork">
+        <img class="card-img-top" src="{{ artwork.image }}" alt="Artwork">
         <div class="card-body">
             <h2 class="card-title">{{ artwork.name }}</h2>
             <p class="card-text">{{ artwork.description }}</p>

@@ -4,11 +4,11 @@
     <h1 class="mt-4">{{ artwork.name }}</h1>
     <p class="lead">
         by
-        <a href="{% url "artist_page" artwork.artist.id %}">{{ artwork.artist.name }}</a>
+        <a href="{% url "artist_page" artwork.artist %}">{{ artwork.artist_name }}</a>
     </p>
     <hr>
     <!-- Preview Image -->
-    <img class="img-fluid rounded" src="{{ artwork.image.url }}" alt="{{ artwork.name }}">
+    <img class="img-fluid rounded" src="{{ artwork.image }}" alt="{{ artwork.name }}">
 
     <hr>
     <!-- Info -->

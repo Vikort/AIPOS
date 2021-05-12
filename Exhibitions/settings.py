@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ExhibitionsWebApp.apps.ExhibitionswebappConfig',
+    'rest',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [

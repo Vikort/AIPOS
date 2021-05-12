@@ -5,7 +5,7 @@
 
     <hr>
     <!-- Preview Image -->
-    <img class="img-fluid rounded" src="{{ exhibition.image.url }}" alt="{{ exhibition.name }}">
+    <img class="img-fluid rounded" src="{{ exhibition.image }}" alt="{{ exhibition.name }}">
 
     <hr>
     <!-- Info -->
@@ -21,9 +21,9 @@
     <hr>
     <h5>Artworks</h5>
 
-    {% for artwork in exhibition.get_artworks %}
+    {% for artwork in exhibition.artworks %}
         <a href="{% url "artwork_page" artwork.id %}">
-            <img src="{{ artwork.image.url }}" class="rounded img-thumbnail" alt="Artwork">
+            <img src="{{ artwork.image }}" class="rounded img-thumbnail" alt="Artwork">
         </a>
         <a href="{% url "artwork_page" artwork.id %}">
             <p>{{ artwork.name }}</p>

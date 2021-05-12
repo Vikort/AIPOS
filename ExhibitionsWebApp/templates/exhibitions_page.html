@@ -4,7 +4,7 @@
     {% for exhibition in exhibition_list %}
     <!-- Blog Post -->
     <div class="card mb-4">
-        <img class="card-img-top" src="{{ exhibition.image.url }}" alt="Exhibition">
+        <img class="card-img-top" src="{{ exhibition.image }}" alt="Exhibition">
         <div class="card-body">
             <h2 class="card-title">{{ exhibition.name }}</h2>
             <p class="card-text">{{ exhibition.description }}</p>
