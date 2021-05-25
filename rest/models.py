@@ -1,4 +1,14 @@
 from django.db import models
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
+
+
+def check_edit_permission(request, obj):
+    if request.user.is_superuser:
+        return True
+    else:
+        return obj == request.user
 
 
 # Create your models here.

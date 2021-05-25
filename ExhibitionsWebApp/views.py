@@ -8,7 +8,7 @@ import json
 
 # Create your views here.
 
-api_url = 'http://localhost:8000/rest_api/'
+api_url = 'http://localhost:8000/api/'
 
 
 def main_page(request):
@@ -369,4 +369,13 @@ def exhibition_hall_edit(request, pk):
             exhibition_hall = i
     if exhibition_hall is None:
         return HttpResponseNotFound("<h2>Exhibition hall is not found</h2>")
-    return render(request, 'exhibition_hall_edit.html', {'form': ExhibitionHallForm, 'exhibitions_hall': exhibition_hall['id']})
+    return render(request, 'exhibition_hall_edit.html',
+                  {'form': ExhibitionHallForm, 'exhibitions_hall': exhibition_hall['id']})
+
+
+def index(request):
+    return render(request, 'index.html')
+
+
+def auth(request):
+    return render(request, 'oauth.html')

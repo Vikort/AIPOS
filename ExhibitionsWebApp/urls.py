@@ -1,8 +1,9 @@
-from django.urls import path
+from django.urls import path, include
 from ExhibitionsWebApp.views import *
+from django.conf.urls import url
 
 urlpatterns = [
-    path('', main_page, name='main_page'),
+    path('spa', main_page, name='main_page'),
     path('owners_page', owners_view, name='owners_page'),
     path('owner_page/<int:pk>', owner_view, name='owner_page'),
     path('create_owner', owner_create, name='create_owner'),
@@ -28,4 +29,7 @@ urlpatterns = [
     path('create_exhibition_hall', exhibition_hall_create, name='create_exhibition_hall'),
     path("delete_exhibition_hall/<int:pk>/", exhibition_hall_delete, name="delete_exhibition_hall"),
     path("edit_exhibition_hall/<int:pk>/", exhibition_hall_edit, name="edit_exhibition_hall"),
+    path('', index),
+    path('auth/', auth),
+    url('', include('social_django.urls', namespace='social')),
 ]
